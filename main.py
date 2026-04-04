@@ -53,7 +53,7 @@ def create_case(case: dict = None, user_id: str = Depends(get_current_user)):
     if case:
         if case.get("title"): data["title"] = case["title"]
         if case.get("description"): data["description"] = case["description"]
-    ref, _ = db.collection("cases").add(data)
+    _, ref = db.collection("cases").add(data)
     data["id"] = ref.id
     return data
 
